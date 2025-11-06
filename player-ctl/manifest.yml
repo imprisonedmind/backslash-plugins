@@ -27,3 +27,27 @@ commands:
       - media
       - pause
       - stop
+
+  - name: player-ctl-next
+    label: Next media item
+    isImmediate: true
+    bgColor: "#2563EB"
+    color: "#FFFFFF"
+    icon: fast-forward
+    keywords:
+      - player
+      - media
+      - next
+      - skip
+
+  - name: player-ctl-previous
+    label: Previous media item
+    isImmediate: true
+    bgColor: "#2563EB"
+    color: "#FFFFFF"
+    icon: rewind
+    keywords:
+      - player
+      - media
+      - previous
+      - back
