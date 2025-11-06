@@ -64,3 +64,15 @@ commands:
       - half
       - split
       - lh
+  - name: gwm-right-half
+    label: Right half
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: sidebar-simple
+    keywords:
+      - window
+      - right
+      - half
+      - split
+      - rh
