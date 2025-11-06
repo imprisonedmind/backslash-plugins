@@ -41,3 +41,14 @@ commands:
       - terminal
       - ami
       - almin
+  - name: gwm-center
+    label: Center window
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: crosshair-simple
+    keywords:
+      - window
+      - center
+      - middle
+      - cn

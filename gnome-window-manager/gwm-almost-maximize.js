@@ -8,73 +8,14 @@ const {
   isMaximizedState,
   isFullscreenState,
   updateWindowStates,
+  findMonitorForWindow,
+  delay,
+  getWindowGeometry,
+  getMonitors,
 } = require("./utils");
-
-const parseKeyValueOutput = (text) =>
-  text
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .reduce((acc, line) => {
-      const [key, value] = line.split("=");
-      if (key && value !== undefined) {
-        acc[key.trim()] = value.trim();
-      }
-      return acc;
-    }, {});
-
-const parseMonitors = (xrandrOutput) =>
-  xrandrOutput
-    .split("\n")
-    .map((line) => line.trim())
-    .map((line) => {
-      const match = line.match(
-        /^([A-Za-z0-9-]+)\s+connected(?:\s+primary)?\s+(\d+)x(\d+)\+(\d+)\+(\d+)/
-      );
-
-      if (!match) {
-        return null;
-      }
-
-      const [, name, width, height, x, y] = match;
-      return {
-        name,
-        width: Number(width),
-        height: Number(height),
-        x: Number(x),
-        y: Number(y),
-      };
-    })
-    .filter(Boolean);
-
-const findMonitorForWindow = (monitors, windowGeometry) => {
-  const windowX = Number(windowGeometry.X);
-  const windowY = Number(windowGeometry.Y);
-  const windowWidth = Number(windowGeometry.WIDTH);
-  const windowHeight = Number(windowGeometry.HEIGHT);
-
-  if ([windowX, windowY, windowWidth, windowHeight].some(Number.isNaN)) {
-    return null;
-  }
-
-  const centerX = windowX + windowWidth / 2;
-  const centerY = windowY + windowHeight / 2;
-
-  return (
-    monitors.find(
-      (monitor) =>
-        centerX >= monitor.x &&
-        centerX <= monitor.x + monitor.width &&
-        centerY >= monitor.y &&
-        centerY <= monitor.y + monitor.height
-    ) || monitors[0] || null
-  );
-};
 
 const SCALE = 0.8;
 const DELAY_AFTER_UNMAXIMIZE_MS = 120;
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const run = async (_, { exec, toast, search }) => {
   await ensureWmctrl(exec, toast);
@@ -107,14 +48,9 @@ const run = async (_, { exec, toast, search }) => {
       await delay(DELAY_AFTER_UNMAXIMIZE_MS);
     }
 
-    const windowGeometry = parseKeyValueOutput(
-      await execCommand(
-        exec,
-        `xdotool getwindowgeometry --shell ${targetWindowDec}`
-      )
-    );
+    const windowGeometry = await getWindowGeometry(exec, targetWindowDec);
 
-    const monitors = parseMonitors(await execCommand(exec, "xrandr --current"));
+    const monitors = await getMonitors(exec);
     const monitor = findMonitorForWindow(monitors, windowGeometry);
 
     if (!monitor) {
