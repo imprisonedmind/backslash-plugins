@@ -24,11 +24,12 @@ const ensurePlayerctl = async (exec, toast) => {
   }
 };
 
-const run = async (_, { exec, toast }) => {
+const run = async (_, { exec, toast, search }) => {
   await ensurePlayerctl(exec, toast);
 
   try {
     await execCommand(exec, "playerctl next");
+    search?.clear?.();
   } catch (error) {
     throw new Error(`Failed to skip to the next item: ${error.message}`);
   }

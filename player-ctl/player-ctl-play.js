@@ -24,11 +24,12 @@ const ensurePlayerctl = async (exec, toast) => {
   }
 };
 
-const run = async (_, { exec, toast }) => {
+const run = async (_, { exec, toast, search }) => {
   await ensurePlayerctl(exec, toast);
 
   try {
     await execCommand(exec, "playerctl play");
+    search?.clear?.();
   } catch (error) {
     throw new Error(`Failed to start media playback: ${error.message}`);
   }
