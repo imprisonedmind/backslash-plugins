@@ -76,3 +76,15 @@ commands:
       - half
       - split
       - rh
+  - name: gwm-hide-others
+    label: Hide others
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: eye-slash
+    keywords:
+      - window
+      - hide
+      - others
+      - ha
+      - ho
