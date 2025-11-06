@@ -9,16 +9,23 @@ const execCommand = (exec, command) =>
     });
   });
 
-const ensurePlayerctl = async (exec) => {
+const ensurePlayerctl = async (exec, toast) => {
   try {
     await execCommand(exec, "command -v playerctl");
   } catch {
-    throw new Error("playerctl is required to control media. Install it with your package manager.");
+    const message =
+      "playerctl is required to control media. Install it with your package manager.";
+
+    if (toast?.error) {
+      toast.error("Missing dependency", { description: message });
+    }
+
+    throw new Error(message);
   }
 };
 
-const run = async (_, { exec }) => {
-  await ensurePlayerctl(exec);
+const run = async (_, { exec, toast }) => {
+  await ensurePlayerctl(exec, toast);
 
   try {
     await execCommand(exec, "playerctl pause");
