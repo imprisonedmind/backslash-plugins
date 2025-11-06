@@ -99,6 +99,7 @@ commands:
       - minimize
       - minimise
       - min
+      - mw
   - name: gwm-quit-all
     label: Quit all apps
     isImmediate: true
