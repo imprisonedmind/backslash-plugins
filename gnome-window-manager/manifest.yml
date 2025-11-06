@@ -88,3 +88,15 @@ commands:
       - others
       - ha
       - ho
+  - name: gwm-minimize
+    label: Minimize window
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: minus-square
+    keywords:
+      - window
+      - minimize
+      - minimise
+      - min
+      - hide

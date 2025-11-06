@@ -1,22 +1,4 @@
-const {
-  execCommand,
-  ensureXprop,
-  ensureXdotool,
-  getTargetWindowId,
-  getStackingOrder,
-} = require("./utils");
-
-const hexToDec = (hex) => Number.parseInt(hex, 16);
-
-const minimizeWindow = async (exec, windowHex) => {
-  const windowDec = hexToDec(windowHex);
-
-  if (!Number.isFinite(windowDec)) {
-    throw new Error(`Invalid window id: ${windowHex}`);
-  }
-
-  await execCommand(exec, `xdotool windowminimize ${windowDec}`);
-};
+const { ensureXprop, ensureXdotool, getTargetWindowId, getStackingOrder, minimizeWindow } = require("./utils");
 
 const run = async (_, { exec, toast, search }) => {
   await ensureXprop(exec, toast);

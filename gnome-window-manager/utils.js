@@ -101,6 +101,21 @@ const updateWindowStates = async (exec, windowId, operation, states) => {
   }
 };
 
+const windowHexToDecimal = (windowIdHex) => {
+  const value = Number.parseInt(windowIdHex, 16);
+
+  if (!Number.isFinite(value)) {
+    throw new Error(`Invalid window id: ${windowIdHex}`);
+  }
+
+  return value;
+};
+
+const minimizeWindow = async (exec, windowIdHex) => {
+  const windowDec = windowHexToDecimal(windowIdHex);
+  await execCommand(exec, `xdotool windowminimize ${windowDec}`);
+};
+
 const parseKeyValueOutput = (text) =>
   text
     .split("\n")
@@ -188,6 +203,8 @@ module.exports = {
   isMaximizedState,
   isFullscreenState,
   updateWindowStates,
+  windowHexToDecimal,
+  minimizeWindow,
   parseKeyValueOutput,
   parseMonitors,
   findMonitorForWindow,
