@@ -1,37 +1,15 @@
-const execCommand = (exec, command) =>
-  new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        const message = stderr?.trim() || error.message || "Unknown error";
-        return reject(new Error(message));
-      }
-      resolve(stdout);
-    });
+const { runPlayerctlCommand } = require("./utils");
+
+const run = async (_, context) => {
+  const { search } = context;
+
+  const didRun = await runPlayerctlCommand(context, {
+    command: "playerctl previous",
+    errorPrefix: "Failed to go to the previous item",
   });
 
-const ensurePlayerctl = async (exec, toast) => {
-  try {
-    await execCommand(exec, "command -v playerctl");
-  } catch {
-    const message =
-      "playerctl is required to control media. Install it with your package manager.";
-
-    if (toast?.error) {
-      toast.error("Missing dependency", { description: message });
-    }
-
-    throw new Error(message);
-  }
-};
-
-const run = async (_, { exec, toast, search }) => {
-  await ensurePlayerctl(exec, toast);
-
-  try {
-    await execCommand(exec, "playerctl previous");
+  if (didRun) {
     search?.clear?.();
-  } catch (error) {
-    throw new Error(`Failed to go to the previous item: ${error.message}`);
   }
 };
 
