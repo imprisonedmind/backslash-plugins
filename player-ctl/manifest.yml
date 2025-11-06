@@ -1,0 +1,29 @@
+name: player-ctl
+label: Player Controls
+version: 1.0.0
+author: Backslash
+
+commands:
+  - name: player-ctl-play
+    label: Play media
+    isImmediate: true
+    bgColor: "#2563EB"
+    color: "#FFFFFF"
+    icon: play
+    keywords:
+      - player
+      - media
+      - play
+      - resume
+
+  - name: player-ctl-pause
+    label: Pause media
+    isImmediate: true
+    bgColor: "#2563EB"
+    color: "#FFFFFF"
+    icon: pause
+    keywords:
+      - player
+      - media
+      - pause
+      - stop
