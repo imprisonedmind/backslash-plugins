@@ -1,0 +1,17 @@
+name: gnome-window-manager
+label: GNOME Window Manager
+version: 0.1.0
+author: Backslash
+
+commands:
+  - name: gwm-toggle-fullscreen
+    label: Toggle fullscreen
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: frame-corners
+    keywords:
+      - window
+      - fullscreen
+      - toggle
+      - tf
