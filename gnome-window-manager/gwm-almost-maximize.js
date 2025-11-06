@@ -62,7 +62,10 @@ const run = async (_, { exec, toast, search }) => {
     const x = monitor.x + Math.round((monitor.width - width) / 2);
     const y = monitor.y + Math.round((monitor.height - height) / 2);
 
-    await execCommand(exec, `wmctrl -i -r ${targetWindowId} -e 0,${x},${y},${width},${height}`);
+    await execCommand(
+      exec,
+      `wmctrl -i -r ${targetWindowId} -e 0,${x},${y},${width},${height}`
+    );
     search?.clear?.();
   } catch (error) {
     const message = `Failed to almost maximize: ${error.message}`;

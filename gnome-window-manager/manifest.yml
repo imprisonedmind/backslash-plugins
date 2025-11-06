@@ -57,7 +57,7 @@ commands:
     isImmediate: true
     bgColor: "#F97316"
     color: "#FFFFFF"
-    icon: sidebar-simple
+    icon: align-left-simple
     keywords:
       - window
       - left
@@ -69,7 +69,7 @@ commands:
     isImmediate: true
     bgColor: "#F97316"
     color: "#FFFFFF"
-    icon: sidebar-simple
+    icon: align-right-simple
     keywords:
       - window
       - right
