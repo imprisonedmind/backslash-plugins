@@ -1,0 +1,32 @@
+name: clippy
+label: Clippy
+version: 0.1.0
+author: Luke
+
+commands:
+  - name: clippy-history
+    label: Clipboard History
+    isImmediate: false
+    bgColor: "#22C55E"
+    color: "#FFFFFF"
+    icon: clipboard-text
+    keywords:
+      - clipboard
+      - history
+      - clippy
+      - copy
+      - paste
+      - ch
+  - name: clippy-favorites
+    label: Clipboard Favorites
+    isImmediate: false
+    bgColor: "#DB2777"
+    color: "#FFFFFF"
+    icon: heart
+    keywords:
+      - clipboard
+      - favourites
+      - favorites
+      - clippy
+      - star
+      - chf
