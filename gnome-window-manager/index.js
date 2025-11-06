@@ -8,5 +8,6 @@ module.exports = {
     "gwm-right-half": require("./gwm-right-half"),
     "gwm-hide-others": require("./gwm-hide-others"),
     "gwm-minimize": require("./gwm-minimize"),
+    "gwm-quit-all": require("./gwm-quit-all"),
   },
 };

@@ -99,4 +99,16 @@ commands:
       - minimize
       - minimise
       - min
+  - name: gwm-quit-all
+    label: Quit all apps
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: power
+    keywords:
+      - window
+      - quit
+      - close
+      - apps
+      - qaa
       - hide
