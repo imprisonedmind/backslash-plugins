@@ -52,3 +52,15 @@ commands:
       - center
       - middle
       - cn
+  - name: gwm-left-half
+    label: Left half
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: sidebar-simple
+    keywords:
+      - window
+      - left
+      - half
+      - split
+      - lh

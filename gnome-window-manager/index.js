@@ -4,5 +4,6 @@ module.exports = {
     "gwm-almost-maximize": require("./gwm-almost-maximize"),
     "gwm-almost-minimize": require("./gwm-almost-minimize"),
     "gwm-center": require("./gwm-center"),
+    "gwm-left-half": require("./gwm-left-half"),
   },
 };
