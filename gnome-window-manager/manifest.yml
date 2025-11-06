@@ -15,3 +15,29 @@ commands:
       - fullscreen
       - toggle
       - tf
+  - name: gwm-almost-maximize
+    label: Almost maximize
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: bounding-box
+    keywords:
+      - window
+      - almost
+      - maximize
+      - alm
+      - almax
+  - name: gwm-almost-minimize
+    label: Almost minimize
+    isImmediate: true
+    bgColor: "#F97316"
+    color: "#FFFFFF"
+    icon: app-window
+    keywords:
+      - window
+      - almost
+      - minimize
+      - minimise
+      - terminal
+      - ami
+      - almin
